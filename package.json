@@ -1,0 +1,23 @@
+{
+  "name": "slack-user-sync",
+  "version": "1.0.0",
+  "description": "sync slack users between two slack channels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaunaa126/slack-user-sync.git"
+  },
+  "author": "Shaun Alexander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaunaa126/slack-user-sync/issues"
+  },
+  "homepage": "https://github.com/shaunaa126/slack-user-sync#readme",
+  "dependencies": {
+    "@slack/web-api": "^6.1.0",
+    "commander": "^7.2.0"
+  }
+}
