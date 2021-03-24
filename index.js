@@ -3,16 +3,19 @@ const { WebClient } = require('@slack/web-api');
 const web = new WebClient(process.env.SLACK_TOKEN);
 
 async function syncUsers(options) {
-  const results = await web.conversations.members({
-    channel: options.sourceChannel,
-  })
-  console.log('Results of conversation.members', results);
+  let users = [];
+
+  for await (const page of web.paginate('conversations.members', { channel: options.sourceChannel })) {
+    console.log('Results of conversation.members', page)
+    users = page.members;
+    break;
+  }
   
-  const results2 = await web.conversations.invite({
+  const response = await web.conversations.invite({
     channel: options.targetChannel,
-    users: results.members.join(","),
+    users: users.join(","),
   })
-  console.log('Results of conversation.invite', results2);
+  console.log('Results of conversation.invite', response);
 }
 
 async function main(options) {
