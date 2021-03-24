@@ -31,3 +31,5 @@ jobs:
       - name: Run script
         run: |
           node dist/index.js ${{ github.event.inputs.sourceChannel }} ${{ github.event.inputs.targetChannel }}
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
