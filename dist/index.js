@@ -16,7 +16,6 @@ async function syncUsers(options) {
   for await (const page of web.paginate('conversations.members', { channel: options.sourceChannel })) {
     console.log('Results of conversation.members', page)
     users = page.members;
-    break;
   }
   
   const response = await web.conversations.invite({
